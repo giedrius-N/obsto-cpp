@@ -1,0 +1,11 @@
+.git
+.gitignore
+bld
+build
+.vs
+.vscode
+clangtidy-results.txt
+Tests
+Scripts
+README.md
+task.md

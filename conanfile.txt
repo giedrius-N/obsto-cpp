@@ -1,0 +1,9 @@
+[requires]
+asio/1.30.2
+
+[test_requires]
+gtest/1.15.0
+
+[generators]
+CMakeDeps
+CMakeToolchain

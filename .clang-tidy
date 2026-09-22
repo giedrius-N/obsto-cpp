@@ -1,0 +1,18 @@
+Checks: >
+  -*,
+  bugprone-*,
+  performance-*,
+  cppcoreguidelines-pro-type-const-cast,
+  cppcoreguidelines-pro-type-static-cast-downcast,
+  cppcoreguidelines-slicing,
+  cppcoreguidelines-narrowing-conversions,
+  cppcoreguidelines-init-variables,
+  clang-analyzer-*,
+  -bugprone-easily-swappable-parameters,
+  -bugprone-implicit-widening-of-multiplication-result,
+  -performance-enum-size,
+  -performance-avoid-endl
+
+WarningsAsErrors: ''
+HeaderFilterRegex: '.*'
+FormatStyle: none
