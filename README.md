@@ -1,8 +1,33 @@
 # obsto
 
+```text
+   ██████╗ ██████╗ ███████╗████████╗ ██████╗
+  ██╔═══██╗██╔══██╗██╔════╝╚══██╔══╝██╔═══██╗
+  ██║   ██║██████╔╝███████╗   ██║   ██║   ██║
+  ██║   ██║██╔══██╗╚════██║   ██║   ██║   ██║
+  ╚██████╔╝██████╔╝███████║   ██║   ╚██████╔╝
+   ╚═════╝ ╚═════╝ ╚══════╝   ╚═╝    ╚═════╝
+```
+
 **obsto** is a simple C++ object storage service, built to store arbitrary objects (text, binary files, images) under a string key/path.
 
-The same underlying storage is reachable through two different protocols on the same port - the server automatically detects the protocol being used by the client.
+The same storage engine can be accessed through two protocols on the same port:
+
+```text
+                         ┌─────────────────┐
+                         │      OBSTO      │
+                         │  Object Storage │
+                         └────────┬────────┘
+                                  │
+                    ┌─────────────┴─────────────┐
+                    │                           │
+               HTTP/1.1                       RESP
+                    │                           │
+             ┌──────┴──────┐             ┌──────┴──────┐
+             │ curl / HTTP │             │ redis-cli   │
+             │   clients   │             │   clients   │
+             └─────────────┘             └─────────────┘
+```
 
 ## Protocols supported
 
@@ -126,13 +151,18 @@ Scripts\runTests.cmd --gtest_filter=*TestIntegration*
 
 - Use `Scripts\runClangtidy.cmd` to run static code analysis on the `App` and `Core` project files. Configuration and enabled checks are defined in `.clang-tidy` at the repository root.
 
-## Known limitations / future work
+## Known Limitations
 
-The current version is designed as a streamlined, unauthenticated system operating over plain transport:
+obsto currently operates as an unauthenticated service over plaintext connections.
 
-- TLS / Encryption: Operates on plaintext connections. Supporting TLS handshakes and encrypted transport across both protocols is planned for future iterations.
+Planned future work includes:
 
-- Authentication & Access Control: Designed without access restrictions or auth command support (such as HTTP Basic Auth or RESP AUTH). Future updates will introduce access control models.
+- TLS / encrypted transport
+- Authentication
+- Access control
+- Additional storage and deployment options
+
+---
 
 ## License
 
